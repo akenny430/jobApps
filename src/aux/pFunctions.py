@@ -6,7 +6,7 @@ from .messages import wrapM
 from .defaults import defaultJSON as _defaultJSON
 
 
-def printInfo(level=None, cid=None, personal=False, jFile=_defaultJSON):
+def printInfo(cid=None, level=None, personal=False, jFile=_defaultJSON):
     "Function to print out specific info about certain companies"
 
     # aux function to print out the correct color of the job status
