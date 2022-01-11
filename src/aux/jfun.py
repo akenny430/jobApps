@@ -4,7 +4,9 @@ from datetime import datetime
 
 from .colors import colorWrap
 from .messages import printM, _dateCast
-from .defaults import defaultJSON as _defaultJSON, defaultFOLDER as _defaultFOLDER
+# from .defaults import defaultJSON as _defaultJSON, defaultFOLDER as _defaultFOLDER
+_defaultJSON = '../data/22.json'
+_defaultFOLDER = '../22'
 
 
 
