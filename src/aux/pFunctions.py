@@ -27,7 +27,7 @@ def printInfo(cid=None, level=None, personal=False, jFile=_defaultJSON):
         database = json.load(file)
 
     # clearing out rest of terminal
-    os.system('clear')
+    # os.system('clear')
 
     # printing out personal info
     if personal is True: 
