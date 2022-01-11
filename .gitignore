@@ -3,3 +3,6 @@
 
 # any personal files/interview questions that I am not able to share 
 files*
+
+# pycache 
+*.pyc
