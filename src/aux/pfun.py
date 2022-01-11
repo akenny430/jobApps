@@ -3,9 +3,7 @@ import os
 
 from .colors import colorWrap, colorPrint
 from .messages import wrapM
-# from .defaults import defaultJSON as _defaultJSON, defaultFOLDER as _defaultFOLDER
-_defaultJSON = '../data/22.json'
-_defaultFOLDER = '../22'
+from .info import _defaultJSON, _defaultFOLDER
 
 
 
