@@ -1,6 +1,6 @@
 import argparse
 
-from aux.jFunctions import removeJob
+from aux.jfun import removeJob
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()

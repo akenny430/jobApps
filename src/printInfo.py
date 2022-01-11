@@ -1,6 +1,6 @@
 import argparse
 
-from aux.pFunctions import printInfo
+from aux.pfun import printInfo
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()

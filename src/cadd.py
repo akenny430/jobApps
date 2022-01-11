@@ -1,6 +1,6 @@
 import argparse
 
-from aux.cFunctions import addCompany
+from aux.cfun import addCompany
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
