@@ -65,11 +65,13 @@ def printInfo(cid=None, level=None, personal=False, jFile=_defaultJSON):
                 if level == 2: # print out companies and jobs only
                     colorPrint('%%', 'dg')
                     for jobs, jobInfo in companyInfo['jobs'].items():
-                        print('(' + colorWrap(jobs, 'g1') + '): ' + jobInfo['title'] + ', ' + _wrapStatus(jobInfo['status']))
+                        # print('(' + colorWrap(jobs, 'g1') + '): ' + jobInfo['title'] + ', ' + _wrapStatus(jobInfo['status']))
+                        print('(' + colorWrap(jobs, 'g1') + '): ' + jobInfo['title'] + ' ' + _wrapStatus(jobInfo['status']))
                 else: # have full specification
                     colorPrint('%%', 'dg')
                     for jobs, jobInfo in companyInfo['jobs'].items():
-                        print('(' + colorWrap(jobs, 'g1') + '): ' + jobInfo['title'] + ', ' + _wrapStatus(jobInfo['status']))
+                        # print('(' + colorWrap(jobs, 'g1') + '): ' + jobInfo['title'] + ', ' + _wrapStatus(jobInfo['status']))
+                        print('(' + colorWrap(jobs, 'g1') + '): ' + jobInfo['title'] + ' ' + _wrapStatus(jobInfo['status']))
                         for tag, message in jobInfo['notes'].items():
                             colorPrint('      ' + tag + ': ' + message, 'mg')
                         colorPrint('%%', 'dg')

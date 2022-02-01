@@ -6,10 +6,12 @@ from aux.jfun import updateJob
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        '-c', '--cid', type=str, required=True, help='ID used for company'
+        # '-c', '--cid', type=str, required=True, help='ID used for company'
+        'cid', type=str, help='ID used for company'
     )
     parser.add_argument(
-        '-j', '--jid', type=str, required=True, help='ID used for job'
+        # '-j', '--jid', type=str, required=True, help='ID used for job'
+        'jid', type=str, help='ID used for job'
     )
     parser.add_argument(
         '-m', '--message', type=str, required=True, help='ID used for job'
