@@ -9,11 +9,34 @@ from .messages import printM
 
 
 
+def _readjustInfo():
+    """Aux function to have the default JSON file printed in info.py file"""
+
+    # getting directory path to the main directory of wherever this project is stored in the system
+    pathToBase = os.path.dirname(os.path.realpath(__file__))[:-11]
+
+    # getting all datasets along with current one
+    with open(pathToBase + '/data/00-datasets.json', 'r') as file: 
+        tempDict = json.load(file)
+    current = tempDict['current']
+
+    # writing defaults 
+    with open(pathToBase + '/python/aux/info.py', 'w') as file:
+        for names, defaults in tempDict['datasets'].items():
+            if names == current:
+                file.write(f"_defaultJSON = '{defaults['_defaultJSON']}'\n")
+                file.write(f"_defaultFOLDER = '{defaults['_defaultFOLDER']}'\n")
+
+
+
+
+
+
+
 def newData(name, email=None, phone=None, GitHub=None, LinkedIn=None, Twitter=None):
     """Function to create a new dataset to start adding jobs to"""
 
     # getting directory path to the main directory of wherever this project is stored in the system
-    # pathToBase = os.path.dirname(os.path.realpath(__file__)) + '/../..'
     pathToBase = os.path.dirname(os.path.realpath(__file__))[:-11]
 
     # creating new JSON file 
@@ -52,6 +75,9 @@ def newData(name, email=None, phone=None, GitHub=None, LinkedIn=None, Twitter=No
     # printing message 
     printM('Added new database called ' + colorWrap(name, 'r'))
 
+    # readjusting default database 
+    _readjustInfo()
+
 
 
 
@@ -60,7 +86,6 @@ def removeData(name, newDefault=None):
     """Function to remove data set"""
 
     # getting directory path to the main directory of wherever this project is stored in the system
-    # pathToBase = os.path.dirname(os.path.realpath(__file__)) + '/../..'
     pathToBase = os.path.dirname(os.path.realpath(__file__))[:-11]
 
     # removing both the folder and JSON 
@@ -71,15 +96,12 @@ def removeData(name, newDefault=None):
     with open(pathToBase + '/data/00-datasets.json', 'r') as file: 
         tempDict = json.load(file)
     tempDict['datasets'].pop(name, None) 
-    # if newDefault is None: 
-    #     tempDict['current'] = '' if len(tempDict['datasets']) == 0 else [*tempDict][0]
-    # else:
-    #     tempDict['current'] = newDefault
+    # having to change current directory if it is set to the one we are deleting 
     if tempDict['current'] != name: 
         pass
     else: 
         if newDefault is None: 
-            tempDict['current'] = '' if len(tempDict['datasets']) == 0 else [*tempDict][0]
+            tempDict['current'] = '' if len(tempDict['datasets']) == 0 else [*tempDict['datasets']][0]
         else:
             tempDict['current'] = newDefault
     with open(pathToBase + '/data/00-datasets.json', 'w') as file: 
@@ -87,6 +109,9 @@ def removeData(name, newDefault=None):
 
     # printing message 
     printM('Removed database ' + colorWrap(name, 'r'))
+
+    # readjusting default database 
+    _readjustInfo()
 
 
 
