@@ -1,6 +1,12 @@
 import json 
 import os
-import time 
+
+from .colors import colorWrap
+from .messages import printM
+
+
+
+
 
 def newData(name, email=None, phone=None, GitHub=None, LinkedIn=None, Twitter=None):
     """Function to create a new dataset to start adding jobs to"""
@@ -24,10 +30,29 @@ def newData(name, email=None, phone=None, GitHub=None, LinkedIn=None, Twitter=No
     with open(pathToBase + '/data/' + name + '.json', 'w') as file: 
         json.dump(newDict, file, indent=4)
 
+    # adding terms to default json 
+    defaultDict = {
+        '_defaultJSON': pathToBase + '/data/' + name + '.json',
+        '_defaultFOLDER': pathToBase + '/' + name
+    }
+    with open(pathToBase + '/data/00-datasets.json', 'r') as file: 
+        tempDict = json.load(file)
+    tempDict['current'] = name
+    tempDict['datasets'].update(defaultDict)
+    with open(pathToBase + '/data/00-datasets.json', 'w') as file: 
+        json.dump(tempDict, file, indent=4)
+
     # creating new directory in the base 
     os.system('mkdir ' + pathToBase + '/' + name)
 
-def removeData(name):
+    # printing message 
+    printM('Successfully added new database called ' + colorWrap(name, 'r'))
+
+
+
+
+
+def removeData(name, newDefault=None):
     """Function to remove data set"""
 
     # getting directory path to the main directory of wherever this project is stored in the system
@@ -36,6 +61,11 @@ def removeData(name):
     # removing both the folder and JSON 
     os.system('rm -rf ' + pathToBase + '/' + name)
     os.system('rm -f ' + pathToBase + '/data/' + name + '.json')
+
+    # removing from database json 
+
+
+
 
 
 def addInfo():
