@@ -1,5 +1,6 @@
 import json 
 import os
+# import time 
 
 from .colors import colorWrap
 from .messages import printM
@@ -32,8 +33,10 @@ def newData(name, email=None, phone=None, GitHub=None, LinkedIn=None, Twitter=No
 
     # adding terms to default json 
     defaultDict = {
-        '_defaultJSON': pathToBase + '/data/' + name + '.json',
-        '_defaultFOLDER': pathToBase + '/' + name
+        name: {
+            '_defaultJSON': pathToBase + '/data/' + name + '.json',
+            '_defaultFOLDER': pathToBase + '/' + name
+        }
     }
     with open(pathToBase + '/data/00-datasets.json', 'r') as file: 
         tempDict = json.load(file)
@@ -46,7 +49,7 @@ def newData(name, email=None, phone=None, GitHub=None, LinkedIn=None, Twitter=No
     os.system('mkdir ' + pathToBase + '/' + name)
 
     # printing message 
-    printM('Successfully added new database called ' + colorWrap(name, 'r'))
+    printM('Added new database called ' + colorWrap(name, 'r'))
 
 
 
@@ -63,11 +66,24 @@ def removeData(name, newDefault=None):
     os.system('rm -f ' + pathToBase + '/data/' + name + '.json')
 
     # removing from database json 
+    with open(pathToBase + '/data/00-datasets.json', 'r') as file: 
+        tempDict = json.load(file)
+    tempDict['datasets'].pop(name, None) 
+    if newDefault is None: 
+        tempDict['current'] = '' if len(tempDict['defaults']) == 0 else [*tempDict][0]
+    else:
+        tempDict['current'] = newDefault
+    with open(pathToBase + '/data/00-datasets.json', 'w') as file: 
+        json.dump(tempDict, file, indent=4)
+
+    # printing message 
+    printM('Removed database ' + colorWrap(name, 'r'))
 
 
 
 
 
-def addInfo():
-    """Function to add your personal information to JSON file"""
-    pass 
+# if __name__ == '__main__':
+#     newData('hey', email='blah@blah.com')
+#     time.sleep(10)
+#     removeData('hey', '22')
