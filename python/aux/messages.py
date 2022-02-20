@@ -13,7 +13,7 @@ def wrapM(input, state=None):
     elif state == 'w1': # warning 
         return _wrapMessage(input, 'y', '!!')
     elif state == 'c': # celebration
-        return _wrapMessage(input, 'y', '*')
+        return _wrapMessage(input, 'y', '***')
     else: # generic message 
         return _wrapMessage(input, 'dg', '%%')
 
