@@ -6,3 +6,6 @@ files*
 
 # pycache 
 *.pyc
+
+# linkedin resume 
+linkedin*
