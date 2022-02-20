@@ -70,7 +70,7 @@ def removeData(name, newDefault=None):
         tempDict = json.load(file)
     tempDict['datasets'].pop(name, None) 
     if newDefault is None: 
-        tempDict['current'] = '' if len(tempDict['defaults']) == 0 else [*tempDict][0]
+        tempDict['current'] = '' if len(tempDict['datasets']) == 0 else [*tempDict][0]
     else:
         tempDict['current'] = newDefault
     with open(pathToBase + '/data/00-datasets.json', 'w') as file: 
