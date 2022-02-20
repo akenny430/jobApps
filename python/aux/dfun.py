@@ -1,5 +1,6 @@
 import json 
 import os
+import time 
 
 def newData(name, email=None, phone=None, GitHub=None, LinkedIn=None, Twitter=None):
     """Function to create a new dataset to start adding jobs to"""
@@ -28,12 +29,15 @@ def newData(name, email=None, phone=None, GitHub=None, LinkedIn=None, Twitter=No
 
 def removeData(name):
     """Function to remove data set"""
-    pass
+
+    # getting directory path to the main directory of wherever this project is stored in the system
+    pathToBase = os.path.dirname(os.path.realpath(__file__)) + '/../..'
+
+    # removing both the folder and JSON 
+    os.system('rm -rf ' + pathToBase + '/' + name)
+    os.system('rm -f ' + pathToBase + '/data/' + name + '.json')
 
 
 def addInfo():
     """Function to add your personal information to JSON file"""
     pass 
-
-if __name__ == '__main__':
-    newData('hey')
