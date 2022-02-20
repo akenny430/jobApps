@@ -122,3 +122,8 @@ def updateJob(cid, jid, message, changeStatus=None, date=None, jFile=_defaultJSO
     # overwriting JSON file 
     with open(jFile, 'w') as file:
         json.dump(database, file, indent=4)
+
+	# printing message 
+    printM(
+		'Added update to ' + colorWrap(jid, 'g1') + ' for ' + colorWrap(cid, 'o') + ' to database'
+	)

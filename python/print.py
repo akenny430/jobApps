@@ -26,7 +26,7 @@ if __name__ == '__main__':
         if args.cid is None:
             defLevel = 3
         else:
-            defLevel = 1
+            defLevel = 2
     else:
         defLevel = int(args.level)
 
