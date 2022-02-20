@@ -15,10 +15,10 @@ def colorWrap(input, color=None):
         return '\033[38;5;70m' + input + '\033[0m'
     elif color == 'g2': # green 2
         return '\033[38;5;106m' + input + '\033[0m'
-    elif color == 'b1': # blue 1
+    elif color == 'b1': # dark blue
         return '\033[38;5;33m' + input + '\033[0m'
-    elif color == 'b2': # blue 2
-        return '\033[38;5;39m' + input + '\033[0m'
+    elif color == 'b2': # light blue
+        return '\033[38;5;51m' + input + '\033[0m'
     elif color == 'pu': # purple 
         return '\033[38;5;171m' + input + '\033[0m'
     elif color == 'pi': # pink 
