@@ -5,15 +5,15 @@ import os
 from .colors import colorWrap
 from .messages import printM
 
+# getting directory path to the main directory of wherever this project is stored in the system
+pathToBase = os.path.dirname(os.path.realpath(__file__))[:-11]
+
 
 
 
 
 def _readjustInfo():
     """Aux function to have the default JSON file printed in info.py file"""
-
-    # getting directory path to the main directory of wherever this project is stored in the system
-    pathToBase = os.path.dirname(os.path.realpath(__file__))[:-11]
 
     # getting all datasets along with current one
     with open(pathToBase + '/data/00-datasets.json', 'r') as file: 
@@ -35,9 +35,6 @@ def _readjustInfo():
 
 def newData(name, email=None, phone=None, GitHub=None, LinkedIn=None, Twitter=None):
     """Function to create a new dataset to start adding jobs to"""
-
-    # getting directory path to the main directory of wherever this project is stored in the system
-    pathToBase = os.path.dirname(os.path.realpath(__file__))[:-11]
 
     # creating new JSON file 
     newDict = {
@@ -85,9 +82,6 @@ def newData(name, email=None, phone=None, GitHub=None, LinkedIn=None, Twitter=No
 def removeData(name, newDefault=None):
     """Function to remove data set"""
 
-    # getting directory path to the main directory of wherever this project is stored in the system
-    pathToBase = os.path.dirname(os.path.realpath(__file__))[:-11]
-
     # removing both the folder and JSON 
     os.system('rm -rf ' + pathToBase + '/' + name)
     os.system('rm -f ' + pathToBase + '/data/' + name + '.json')
@@ -119,9 +113,6 @@ def removeData(name, newDefault=None):
 
 def selectData(name):
     """Function to select current dataset from multiple"""
-
-    # getting directory path to the main directory of wherever this project is stored in the system
-    pathToBase = os.path.dirname(os.path.realpath(__file__))[:-11]
 
     # reading in dataset json 
     with open(pathToBase + '/data/00-datasets.json', 'r') as file: 
