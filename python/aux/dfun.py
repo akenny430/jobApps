@@ -13,7 +13,8 @@ def newData(name, email=None, phone=None, GitHub=None, LinkedIn=None, Twitter=No
     """Function to create a new dataset to start adding jobs to"""
 
     # getting directory path to the main directory of wherever this project is stored in the system
-    pathToBase = os.path.dirname(os.path.realpath(__file__)) + '/../..'
+    # pathToBase = os.path.dirname(os.path.realpath(__file__)) + '/../..'
+    pathToBase = os.path.dirname(os.path.realpath(__file__))[:-11]
 
     # creating new JSON file 
     newDict = {
@@ -59,7 +60,8 @@ def removeData(name, newDefault=None):
     """Function to remove data set"""
 
     # getting directory path to the main directory of wherever this project is stored in the system
-    pathToBase = os.path.dirname(os.path.realpath(__file__)) + '/../..'
+    # pathToBase = os.path.dirname(os.path.realpath(__file__)) + '/../..'
+    pathToBase = os.path.dirname(os.path.realpath(__file__))[:-11]
 
     # removing both the folder and JSON 
     os.system('rm -rf ' + pathToBase + '/' + name)
@@ -69,10 +71,17 @@ def removeData(name, newDefault=None):
     with open(pathToBase + '/data/00-datasets.json', 'r') as file: 
         tempDict = json.load(file)
     tempDict['datasets'].pop(name, None) 
-    if newDefault is None: 
-        tempDict['current'] = '' if len(tempDict['datasets']) == 0 else [*tempDict][0]
-    else:
-        tempDict['current'] = newDefault
+    # if newDefault is None: 
+    #     tempDict['current'] = '' if len(tempDict['datasets']) == 0 else [*tempDict][0]
+    # else:
+    #     tempDict['current'] = newDefault
+    if tempDict['current'] != name: 
+        pass
+    else: 
+        if newDefault is None: 
+            tempDict['current'] = '' if len(tempDict['datasets']) == 0 else [*tempDict][0]
+        else:
+            tempDict['current'] = newDefault
     with open(pathToBase + '/data/00-datasets.json', 'w') as file: 
         json.dump(tempDict, file, indent=4)
 
