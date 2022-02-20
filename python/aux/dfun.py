@@ -1,4 +1,4 @@
-import json 
+import json
 import os
 # import time 
 
@@ -112,6 +112,31 @@ def removeData(name, newDefault=None):
 
     # readjusting default database 
     _readjustInfo()
+
+
+
+
+
+def selectData(name):
+    """Function to select current dataset from multiple"""
+
+    # getting directory path to the main directory of wherever this project is stored in the system
+    pathToBase = os.path.dirname(os.path.realpath(__file__))[:-11]
+
+    # reading in dataset json 
+    with open(pathToBase + '/data/00-datasets.json', 'r') as file: 
+        tempDict = json.load(file)
+    if name in tempDict['datasets']:
+        tempDict['current'] = name 
+        with open(pathToBase + '/data/00-datasets.json', 'w') as file: 
+            json.dump(tempDict, file, indent=4)
+        printM('Changed current dataset to ' + colorWrap(tempDict['current'], 'r'))
+    else: 
+        printM('The dataset you are trying to select is not in the json file')
+        allData = ''
+        for dataNames in tempDict['datasets']:
+            allData += dataNames + ', '
+        printM('The current datasets are ' + allData[:-1])
 
 
 
