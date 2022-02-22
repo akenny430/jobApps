@@ -48,7 +48,7 @@ def printInfo(cid=None, level=None, personal=False, jFile=_defaultJSON):
     if personal is True: 
         tempCol = 'lg'
         print('\n' + '=' * numSpaces + '\n')
-        print('[' + colorWrap(current, 'r') + ']')
+        print('[' + colorWrap(current, 'r') + ']\n')
         print(colorWrap('Email:    ', tempCol) + database['info']['email'])
         print(colorWrap('Phone:    ', tempCol) + database['info']['phone'])
         print(colorWrap('GitHub:   ', tempCol) + database['info']['GitHub'])
@@ -76,13 +76,11 @@ def printInfo(cid=None, level=None, personal=False, jFile=_defaultJSON):
                 if level == 2: # print out companies and jobs only
                     colorPrint('%%', 'dg')
                     for jobs, jobInfo in companyInfo['jobs'].items():
-                        # print('(' + colorWrap(jobs, jobCol) + '): ' + jobInfo['title'] + ', ' + _wrapStatus(jobInfo['status']))
-                        print('  (' + colorWrap(jobs, jobCol) + '): ' + jobInfo['title'] + ' ' + _wrapStatus(jobInfo['status']))
+                        print(' (' + colorWrap(jobs, jobCol) + '): ' + jobInfo['title'] + ' ' + _wrapStatus(jobInfo['status']))
                 else: # have full specification
                     colorPrint('%%', 'dg')
                     for jobs, jobInfo in companyInfo['jobs'].items():
-                        # print('(' + colorWrap(jobs, jobCol) + '): ' + jobInfo['title'] + ', ' + _wrapStatus(jobInfo['status']))
-                        print('  (' + colorWrap(jobs, jobCol) + '): ' + jobInfo['title'] + ' ' + _wrapStatus(jobInfo['status']))
+                        print(' (' + colorWrap(jobs, jobCol) + '): ' + jobInfo['title'] + ' ' + _wrapStatus(jobInfo['status']))
                         for tag, message in jobInfo['notes'].items():
                             colorPrint('      ' + tag + ': ' + message, 'mg')
                         colorPrint('%%', 'dg')
@@ -101,17 +99,17 @@ def printInfo(cid=None, level=None, personal=False, jFile=_defaultJSON):
         if level == 1: # print out companies and jobs only
             colorPrint('%%', 'dg')
             for jobs, jobInfo in compDict['jobs'].items():
-                print('  (' + colorWrap(jobs, jobCol) + '): ' + jobInfo['title'] + ', ' + _wrapStatus(jobInfo['status']))
+                print(' (' + colorWrap(jobs, jobCol) + '): ' + jobInfo['title'] + ', ' + _wrapStatus(jobInfo['status']))
         else: # have full specification
             colorPrint('%%', 'dg')
             for jobs, jobInfo in compDict['jobs'].items():
-                print('  (' + colorWrap(jobs, jobCol) + '): ' + jobInfo['title'] + ', ' + _wrapStatus(jobInfo['status']))
+                print(' (' + colorWrap(jobs, jobCol) + '): ' + jobInfo['title'] + ', ' + _wrapStatus(jobInfo['status']))
                 for tag, message in jobInfo['notes'].items():
                     colorPrint('      ' + tag + ': ' + message, 'mg')
                 colorPrint('%%', 'dg')
         print('\n')
 
     # printing out final info from companies
-    print('-' * numSpaces)
+    print('=' * numSpaces)
     print('Applied to ' + colorWrap(str(database['info']['totalJobs']), 'pi') + ' jobs at ' + colorWrap(str(database['info']['totalCompanies']), 'pu') + ' companies   [' + colorWrap(current, 'r') + ']')
     print('=' * numSpaces + '\n')
