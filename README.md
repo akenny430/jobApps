@@ -43,7 +43,7 @@ When applying to any job, there are three "levels" that can be used to classify 
   
 When I say "type", this originally meant the sector of job that you were applying for. 
 For example, one job could be considered `Software Engineering | Google | Software Engineer`, 
-so it`s class is "Software Engineering", the company is "Google", and the actual job is "Software Engineer" 
+so it's class is "Software Engineering", the company is "Google", and the actual job is "Software Engineer" 
 Another example could be `Quantitative Finance | Hudson River Trading | Algorithm Developer`. 
 
 When looking at it this way, it makes sense to separate each "type" of job into completely different datasets. 
@@ -51,9 +51,9 @@ So one dataset would keep track of every job pertaining to, say, software engine
 while another dataset would keep track of all jobs pertaining to quantitative finance, and so on. 
 Practically, however, you could split up these datasets however you so choose. 
 For example, you could create a new dataset for all jobs you apply to in the year 2022, regardless of sector. 
-Or you could create a new dataset with a new alais (i.e. different contact information). 
+Or you could create a new dataset with a new alias (i.e. different contact information). 
 Basically, **the organization of the datasets is completely up to the user**, 
-and so a more accurate representation of the job heirarchy would be: 
+and so a more accurate representation of the job hierarchy would be: 
 
   1. The relevant *dataset*, organized however the user sees fit. 
   
@@ -88,7 +88,7 @@ At this point, everything is set up exactly as described, ready for use.
 ## Understanding Commands (with Example)
 
 First, make sure you are in the `python` directory, as all commands are to be run here. 
-All executables that have to do with adding, updating, modifying, or removing some part of the dataset in the heirarchy are of the form 
+All executables that have to do with adding, updating, modifying, or removing some part of the dataset in the hierarchy are of the form 
 ```
 <descriptive character><action>.py [other arguments]
 ```
@@ -100,7 +100,7 @@ The "descriptive characters" are
   
   3. **j** for job level. 
   
-The possible actions are **add**, **rem**, **up**, and **sel** (although not every level of the heirarchy has all four). 
+The possible actions are **add**, **rem**, **up**, and **sel** (although not every level of the hierarchy has all four). 
 So for example, running the command `./jadd.py [...]` would add a job (you would have to supply arguments to specify more", 
 or the command `crem.py [...]` would remove a specified company from the database. 
 
@@ -130,7 +130,7 @@ To add this job, run the following command:
 ./jadd.py GOOG "Software Engineer" SWE
 ```
 In addition to the job being added, the directory `jobapps/22/GOOG/filesSWE` is created. 
-This directory can be used to store any relevant documents pertenant to this specific job. 
+This directory can be used to store any relevant documents pertinent to this specific job. 
 
 Suppose that a few days later, we get an email back asking us to complete the assessment, 
 a noteworthy point in the application process. 
