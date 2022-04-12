@@ -10,6 +10,10 @@ files*
 # linkedin resume 
 linkedin*
 
+# my own resume and transcripts 
+resume/
+transcript/
+
 # my own datasets 
 21 
 22 
